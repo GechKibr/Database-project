@@ -17,6 +17,9 @@ create table  if NOT exists roomType  (
     description TEXT
 )
 
+
+
+
 create table rooms(
     roomid int PRIMARY KEY AUTO_INCREMENT ,
     roomnumber VARCHAR(10) NOT NULL UNIQUE,
