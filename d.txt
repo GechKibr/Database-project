@@ -1,1 +1,6 @@
  this is introduction part about database project
+ 
+ i add some members 
+ 
+ 
+ 
