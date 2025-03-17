@@ -6,4 +6,4 @@ this is group project
 THis is our DATABASE Assignment
  
  
- 
+ from global 
