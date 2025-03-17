@@ -7,3 +7,5 @@ THis is our DATABASE Assignment
  
  
  from global 
+ 
+ we start
