@@ -1,5 +1,6 @@
 
 
+
 CREATE table IF NOT EXISTS guest(
     guestId int PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(40),
@@ -7,6 +8,7 @@ CREATE table IF NOT EXISTS guest(
     phone VARCHAR(30),
     registrationDate DATETIME DEFAULT CURRENT_TIMESTAMP
 )
+
 
 create table  if NOT exists roomType  (
     roomTypeId int PRIMARY KEY AUTO_INCREMENT ,
@@ -24,6 +26,7 @@ create table rooms(
     lastMaintianceDate DATE,
     FOREIGN KEY (roomsTypeId) REFERENCES roomType(roomTypeId)
 )
+
 
 
 create TABLE reservation (
@@ -79,7 +82,7 @@ create TABLE guestServices(
     guestServiceStatus ENUM('requested', 'in-progress', 'completed', 'cancelled'),
     totatlCharge DECIMAL(10,2),
     Foreign Key (reservation_Id) REFERENCES reservation(reservationid),
-    Foreign Key (service_id) REFERENCES services(serviceId)
+    Foreign key (service_id) REFERENCES services(serviceId)
 )
 
 
@@ -91,28 +94,24 @@ create table inventory(
     unitOfMeasure VARCHAR(10),
     suplierInfo TEXT 
 )
- -----not finish bellow 
-create table Maintenance(
+
+
+ 
+create table if NOT exists  maintenance (
   maintenance_id int PRIMARY KEY AUTO_INCREMENT,
-  room_id int ,
-  staffId int NOT NULL ,
+  room_id int NOT NULL , 
+  staff_Id int NOT NULL  ,
   issueType VARCHAR(100) NOT NULL,
   reportDate date ,
-
+  startDate DATETIME,
+  completionDate DATETIME,
+  maintenanceStatus ENUM('reported','in-progress','completed'),
+  maintenanceCost DECIMAL(10,2) , 
+  Foreign Key (room_id) REFERENCES rooms(roomid),
+  Foreign Key (staff_Id) REFERENCES staff(staffId)
 )
 
 
---      10. Maintenance Table       ////
--- - maintenance_id (PK, INT, AUTO_INCREMENT)
--- - room_id (FK, INT, NOT NULL)
--- - staff_id (FK, INT, NOT NULL)
--- - issue_type (VARCHAR(100), NOT NULL) (e.g., "Plumbing", "Electrical")
--- - description (TEXT)
--- - report_date (DATETIME, DEFAULT CURRENT_TIMESTAMP)
--- - start_date (DATETIME)
--- - completion_date (DATETIME)
--- - status (ENUM('reported', 'in-progress', 'completed'))
--- - cost (DECIMAL(10,2))
 
 
 
