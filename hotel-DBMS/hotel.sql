@@ -1,7 +1,9 @@
 
+CREATE DATABASE hotel;
 
+use hotel;
 
-CREATE table IF NOT EXISTS guest(
+CREATE table  guest(
     guestId int PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(40),
     lastName VARCHAR(40),
@@ -10,7 +12,7 @@ CREATE table IF NOT EXISTS guest(
 )
 
 
-create table  if NOT exists roomType  (
+create table  roomType  (
     roomTypeId int PRIMARY KEY AUTO_INCREMENT ,
     capacity TINYINT ,
     price DECIMAL(10,2) NOT NULL ,
@@ -63,7 +65,7 @@ create table staff (
     position VARCHAR(50) NOT NULL ,
     phoneNumber VARCHAR(60),
     hireDate DATE,
-    salary DECIMAL(5,2),
+    salary DECIMAL(10,2),
     _status ENUM('active', 'on leave', 'terminated' ) DEFAULT 'active'
 )
 
@@ -71,7 +73,7 @@ create table staff (
 create TABLE services(
     serviceId int PRIMARY KEY AUTO_INCREMENT,
     serviceName VARCHAR(100) NOT NULL,
-    price DECIMAL(6,2),
+    price DECIMAL(10,2),
     availablity ENUM('24/7', 'daytime', 'on-request')
 )
 
@@ -100,7 +102,7 @@ create table inventory(
 
 
  
-create table if NOT exists  maintenance (
+create table  maintenance (
   maintenance_id int PRIMARY KEY AUTO_INCREMENT,
   room_id int NOT NULL , 
   staff_Id int NOT NULL  ,
