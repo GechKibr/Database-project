@@ -3,7 +3,7 @@ CREATE DATABASE hotel;
 
 use hotel;
 
-CREATE table  guest(
+CREATE table  guest (
     guestId int PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(40),
     lastName VARCHAR(40),
@@ -12,24 +12,14 @@ CREATE table  guest(
 )
 
 
-create table  roomType  (
-    roomTypeId int PRIMARY KEY AUTO_INCREMENT ,
-    capacity TINYINT ,
-    price DECIMAL(10,2) NOT NULL ,
-    description TEXT
-)
-
-
-
 
 create table rooms(
     roomid int PRIMARY KEY AUTO_INCREMENT ,
-    roomnumber VARCHAR(10) NOT NULL UNIQUE,
-    roomsTypeId int ,
+    capacity TINYINT ,
     floorNumber int not NULL ,
     availablityStatus ENUM('available', 'occupied', 'maintenance', 'reserved') DEFAULT 'available',
     lastMaintianceDate DATE,
-    FOREIGN KEY (roomsTypeId) REFERENCES roomType(roomTypeId)
+    price DECIMAL(10,2) NOT NULL 
 )
 
 
@@ -41,11 +31,10 @@ create TABLE reservation (
     checkInDate DATE NOT null,
     checkOutDate DATE NOT NULL,
     reservationStatus ENUM('confirmed', 'checked-in', 'checked-out', 'cancelled', 'no-show') DEFAULT 'confirmed',
-    totalAmount DECIMAL(10,3),
-    payementStatus ENUM('paid', 'unpaid', 'partial') DEFAULT 'unpaid',
     Foreign Key (room_id) REFERENCES rooms(roomid),
     Foreign Key (guestsId) REFERENCES guest(guestId)
 )
+
 
 
 create table payment (
@@ -57,6 +46,10 @@ create table payment (
     paymentStatus ENUM('completed', 'failed', 'refunded') DEFAULT 'completed',
     Foreign Key (reservationsId) REFERENCES reservation (reservationid)
 )
+
+
+
+
 
 create table staff (
     staffId int PRIMARY KEY AUTO_INCREMENT,
@@ -72,9 +65,21 @@ create table staff (
 
 create TABLE services(
     serviceId int PRIMARY KEY AUTO_INCREMENT,
+    inventory_id int,
     serviceName VARCHAR(100) NOT NULL,
     price DECIMAL(10,2),
-    availablity ENUM('24/7', 'daytime', 'on-request')
+    availablity ENUM('24/7', 'daytime', 'on-request'),
+    Foreign Key (inventory_id) REFERENCES inventory(inventoryId)
+)
+
+
+
+create table inventory(
+    inventoryId int PRIMARY key  AUTO_INCREMENT,
+    intemName VARCHAR(100) NOT NULL ,
+    quantiyInStock int ,
+    unitOfMeasure VARCHAR(10),
+    suplierInfo TEXT 
 )
 
 
@@ -92,15 +97,6 @@ create TABLE guestServices(
 
 
 
-create table inventory(
-    inventoryId int PRIMARY key  AUTO_INCREMENT,
-    intemName VARCHAR(100) NOT NULL ,
-    quantiyInStock int ,
-    unitOfMeasure VARCHAR(10),
-    suplierInfo TEXT 
-)
-
-
  
 create table  maintenance (
   maintenance_id int PRIMARY KEY AUTO_INCREMENT,
@@ -115,6 +111,8 @@ create table  maintenance (
   Foreign Key (room_id) REFERENCES rooms(roomid),
   Foreign Key (staff_Id) REFERENCES staff(staffId)
 )
+
+
 
 
 
