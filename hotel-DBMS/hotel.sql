@@ -12,7 +12,6 @@ CREATE table  guest (
 )
 
 
-
 create table rooms(
     roomid int PRIMARY KEY AUTO_INCREMENT ,
     capacity TINYINT ,
