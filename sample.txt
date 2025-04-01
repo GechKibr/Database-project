@@ -1,0 +1,84 @@
+-- Using the add_guest procedure to insert guests
+CALL add_guest('John', 'Smith', '555-123-4567');
+CALL add_guest('Emily', 'Johnson', '555-234-5678');
+CALL add_guest('Michael', 'Williams', '555-345-6789');
+CALL add_guest('Sarah', 'Brown', '555-456-7890');
+CALL add_guest('David', 'Jones', '555-567-8901');
+CALL add_guest('Jessica', 'Garcia', '555-678-9012');
+CALL add_guest('Robert', 'Miller', '555-789-0123');
+CALL add_guest('Jennifer', 'Davis', '555-890-1234');
+CALL add_guest('William', 'Rodriguez', '555-901-2345');
+CALL add_guest('Elizabeth', 'Martinez', '555-012-3456');
+CALL add_guest('James', 'Hernandez', '555-123-4568');
+CALL add_guest('Linda', 'Lopez', '555-234-5679');
+CALL add_guest('Christopher', 'Gonzalez', '555-345-6790');
+CALL add_guest('Patricia', 'Wilson', '555-456-7901');
+CALL add_guest('Daniel', 'Anderson', '555-567-9012');
+CALL add_guest('Mary', 'Thomas', '555-678-0123');
+CALL add_guest('Matthew', 'Taylor', '555-789-1234');
+CALL add_guest('Susan', 'Moore', '555-890-2345');
+CALL add_guest('Donald', 'Jackson', '555-901-3456');
+CALL add_guest('Lisa', 'Martin', '555-012-4567');
+CALL add_guest('Richard', 'Lee', '555-123-5678');
+CALL add_guest('Nancy', 'Perez', '555-234-6789');
+CALL add_guest('Joseph', 'Thompson', '555-345-7890');
+CALL add_guest('Karen', 'White', '555-456-8901');
+CALL add_guest('Thomas', 'Harris', '555-567-9013');
+CALL add_guest('Betty', 'Sanchez', '555-678-0124');
+CALL add_guest('Charles', 'Clark', '555-789-1235');
+CALL add_guest('Margaret', 'Lewis', '555-890-2346');
+CALL add_guest('Steven', 'Robinson', '555-901-3457');
+CALL add_guest('Dorothy', 'Walker', '555-012-4568');
+
+
+
+
+
+-- Inserting 30 rooms with varying capacities, floors, and prices
+INSERT INTO rooms (capacity, floorNumber, price) VALUES
+(1, 1, 99.99), (2, 1, 149.99), (2, 1, 149.99), (1, 1, 99.99), (2, 1, 149.99),
+(3, 2, 199.99), (2, 2, 159.99), (1, 2, 109.99), (2, 2, 159.99), (3, 2, 199.99),
+(1, 3, 119.99), (2, 3, 169.99), (2, 3, 169.99), (3, 3, 219.99), (1, 3, 119.99),
+(2, 4, 179.99), (1, 4, 129.99), (3, 4, 229.99), (2, 4, 179.99), (2, 4, 179.99),
+(1, 5, 139.99), (3, 5, 239.99), (2, 5, 189.99), (1, 5, 139.99), (2, 5, 189.99),
+(3, 6, 249.99), (1, 6, 149.99), (2, 6, 199.99), (3, 6, 249.99), (2, 6, 199.99);
+
+-- Set some rooms to maintenance
+UPDATE rooms SET availablityStatus = 'maintenance', lastMaintianceDate = CURRENT_DATE 
+WHERE roomid IN (3, 12, 21);
+
+
+
+
+
+
+
+INSERT INTO staff (firstName, lastName, position, phoneNumber, hireDate, salary) VALUES
+('Michael', 'Scott', 'General Manager', '555-111-2222', '2020-01-15', 75000.00),
+('Dwight', 'Schrute', 'Assistant Manager', '555-222-3333', '2020-03-10', 60000.00),
+('Pam', 'Beesly', 'Front Desk Manager', '555-333-4444', '2020-02-20', 50000.00),
+('Jim', 'Halpert', 'Concierge', '555-444-5555', '2020-04-05', 45000.00),
+('Angela', 'Martin', 'Housekeeping Manager', '555-555-6666', '2020-01-25', 48000.00),
+('Kevin', 'Malone', 'Accountant', '555-666-7777', '2020-05-15', 52000.00),
+('Stanley', 'Hudson', 'Maintenance Supervisor', '555-777-8888', '2020-03-01', 55000.00),
+('Phyllis', 'Vance', 'Housekeeping Staff', '555-888-9999', '2020-06-10', 38000.00),
+('Ryan', 'Howard', 'IT Specialist', '555-999-0000', '2020-07-01', 48000.00),
+('Kelly', 'Kapoor', 'Customer Service', '555-000-1111', '2020-04-20', 42000.00),
+('Andy', 'Bernard', 'Bell Captain', '555-123-9999', '2020-05-01', 40000.00),
+('Oscar', 'Martinez', 'Assistant Accountant', '555-456-8888', '2020-03-15', 45000.00);
+
+
+
+
+
+INSERT INTO inventory (intemName, quantiyInStock, unitOfMeasure, suplierInfo) VALUES
+('Towels', 500, 'pieces', 'CleanLinens Inc., contact: sales@cleanlinens.com'),
+('Pillows', 300, 'pieces', 'SoftComfort Ltd., phone: 800-555-1234'),
+('Bed Sheets', 200, 'sets', 'Luxury Textiles, contact: John Doe, jdoe@luxurytextiles.com'),
+('Toilet Paper', 1000, 'rolls', 'BulkSupplies Co., phone: 800-555-5678'),
+('Shampoo', 300, 'bottles', 'Personal Care Products, contact: Sarah Smith'),
+('Soap Bars', 800, 'pieces', 'PureSoap Manufacturers, phone: 800-555-9012'),
+('Coffee Packets', 1200, 'packs', 'Morning Brew Inc., contact: sales@morningbrew.com'),
+('Tea Bags', 900, 'pieces', 'Tea Leaves Co., phone: 800-555-3456'),
+('Water Bottles', 1500, 'bottles', 'PureWater Distributors'),
+('Cleaning Supplies', 150, 'kits', 'SparkleClean Inc., contact: procurement@sparkleclean.com');
