@@ -14,22 +14,23 @@ select * FROM guest_details;
 
 
 
-
+DROP Procedure add_guest;
 
 
 -- create  procedure to insert data guest table 
+
 DELIMITER //
 CREATE PROCEDURE add_guest(
     IN p_firstName VARCHAR(40),
     IN p_lastName VARCHAR(40),
-    IN p_phone VARCHAR(30)
+    IN p_phone VARCHAR(30),
+    IN re_date DATETIME
 )
 BEGIN
-    INSERT INTO guest (firstName, lastName, phone)
-    VALUES (p_firstName, p_lastName, p_phone);
+    INSERT INTO guest (firstName, lastName, phone, registrationDate)
+    VALUES (p_firstName, p_lastName, p_phone, re_date);
 END //
 DELIMITER ;
-
 
 
 
@@ -48,6 +49,8 @@ BEGIN
 END //
 DELIMITER ;
 
+
+create TRIGGER urdd AFTER udate 
 
 
 

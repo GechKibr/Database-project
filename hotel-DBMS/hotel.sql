@@ -3,6 +3,7 @@ CREATE DATABASE hotel;
 
 use hotel;
 
+
 CREATE table  guest (
     guestId int PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(40),
@@ -14,6 +15,7 @@ CREATE table  guest (
 
 create table rooms(
     roomid int PRIMARY KEY AUTO_INCREMENT ,
+    roomNumber VARCHAR(20) not NULL UNIQUE,
     capacity TINYINT ,
     floorNumber int not NULL ,
     availablityStatus ENUM('available', 'occupied', 'maintenance', 'reserved') DEFAULT 'available',
